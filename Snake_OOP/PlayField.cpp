@@ -7,7 +7,6 @@ using namespace std;
 
 void PlayField::drawPlayField()
 {
-	system("cls");
 	SetConsoleTextAttribute(h, 14);
 	for (int i = 0; i < HeighField; i++)
 	{
@@ -48,7 +47,7 @@ void PlayField::setScoreBoard()
 
 void PlayField::setGamePoints(int gp)
 {
-		this->gamePoints = gp;
+	this->gamePoints = gp;
 }
 
 int PlayField::getGamePoints()

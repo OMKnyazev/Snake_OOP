@@ -2,48 +2,30 @@
 Fruits::Fruits()
 {
 	pointPrice = 10;
-	badge = '@';
+	SetBadge('@');
 	srand(time(0));
-	x_fruit = 1 + rand() % (WidthField - 2);
-	y_fryit = 1 + rand() % (HeighField - 2);
+	set_X(1 + rand() % (WidthField - 2));
+	set_Y(1 + rand() % (HeighField - 2));
+	SetColor(12); // 12 - red color
 }
 
-void Fruits::setFruit(int x, int y)
+Fruits::~Fruits()
 {
-	this->x_fruit = x;
-	this->y_fryit = y;
+
 }
 
-int Fruits::GetX()
+void Fruits::newPosition()
 {
-	return x_fruit;
-}
-
-int Fruits::GetY()
-{
-	return y_fryit;
-}
-
-
-char Fruits::getBadge()
-{
-	return badge;
-}
-
-void Fruits::Draw() 
-{
-	CursorSetting::gotoxy(x_fruit, y_fryit);
-	CursorSetting::color(12) ; // 12 - output color (red)
-	std::cout << getBadge();
+	SetGameObj(1 + rand() % (WidthField - 2), 1 + rand() % (HeighField - 2));
 }
 
 void Fruits::setPointPrice(int pp)
 {
-	this->pointPrice = pp;
+	pointPrice = pp;
 }
 
 
-int Fruits::getPointPrice()
+int Fruits::getPointPrice() const
 {
 	return pointPrice;
 }

@@ -4,65 +4,86 @@ GameObjects::GameObjects()
 {
 }
 
-GameObjects::GameObjects(int x, int y)
+GameObjects::GameObjects(int Coordinate_x, int Coordinate_y)
 {
-	this->x = x;
-	this->y = y;
+	x = Coordinate_x;
+	y = Coordinate_y;
 }
 
-void GameObjects::SetGameObj(int x, int y)
+GameObjects::~GameObjects()
 {
-	this->x = x;
-	this->y = y;
+
 }
 
-int GameObjects::GetX()
+bool GameObjects::GetState() const
+{
+	return state;
+}
+
+void GameObjects::SetState(int newState)
+{
+	state = newState;
+}
+
+void GameObjects::SetGameObj(int Coordinate_x, int Coordinate_y)
+{
+	x = Coordinate_x;
+	y = Coordinate_y;
+}
+
+int GameObjects::GetX() const
 {
 	return x;
 }
 
-int GameObjects::GetY()
+int GameObjects::GetY() const
 {
 	return y;
+}
+
+void GameObjects::set_X(int newX)
+{
+	x = newX;
+}
+
+void GameObjects::set_Y(int newY)
+{
+	y = newY;
 }
 
 void GameObjects::MoveUp()
 {
 	y--;
-	if (y < 0)
-	y = HeighField - 2;
+
 }
 
 void GameObjects::MoveDown()
 {
 	y++;
-	if (y > HeighField - 2)
-	y = 0;
 }
 
 void GameObjects::MoveLeft()
 {
 	x--;
-	if (x < 0)
-	x = WidthField - 1;
 }
 
 void GameObjects::MoveRight()
 {
 	x++;
-	if (x > WidthField - 1)
-	x = 0;
 }
 
 void GameObjects::Draw()
 {
 	CursorSetting::gotoxy(x, y);
+	CursorSetting::color(color);
 	std::cout << badge;
 }
 
 void GameObjects::Draw(char symbol)
 {
-	std:: cout << symbol;
+	CursorSetting::gotoxy(x, y);
+	CursorSetting::color(color);
+	std::cout << symbol;
 }
 
 void GameObjects::CopyPos(GameObjects* GmO)
@@ -83,6 +104,26 @@ int GameObjects::IsEqual(GameObjects* GmO)
 void GameObjects::Debug()
 {
 	std::cout << "(" << x << "," << y << ") ";
+}
+
+char GameObjects::GetBadge() const
+{
+	return badge;
+}
+
+void GameObjects::SetBadge(char newBadge)
+{
+	badge = newBadge;
+}
+
+int GameObjects::GetColor() const
+{
+	return color;
+}
+
+void GameObjects::SetColor(int newColor)
+{
+	color = newColor;
 }
 
 

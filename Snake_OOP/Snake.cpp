@@ -2,62 +2,53 @@
 
 Snake::Snake()
 {
+	SetBadge('X');
+	SetColor(12); //12- red color
 	snakeSize = 1;
 	cell[0] = new GameObjects(WidthField / 2, HeighField / 2);
 	for (int i = 1; i < maxSnakeSize; i++) {
 		cell[i] = NULL;
-		state = 0;
-	}
+
+	};
 }
 
-int Snake::getSankeSize()
+Snake::~Snake()
+{
+	for (int i = 1; i < maxSnakeSize; i++)
+	{
+		if (cell[i] != NULL)
+		{
+			delete cell[i];
+		}
+	};
+}
+
+int Snake::getSankeSize() const
 {
 	return snakeSize;
 }
 
-char Snake::getDirection()
+char Snake::getDirection() const
 {
 	return direction;
 }
 
-bool Snake::getState()
-{
-	return state;
-}
-
-char Snake::getBadge()
-{
-	return badge;
-}
-
 void Snake::setSnakeSize(int value)
 {
-	this->snakeSize = value;
+	snakeSize = value;
 }
 
 void Snake::setDirection(char value)
 {
-	this->direction = value;
-}
-
-void Snake::setState(bool value)
-{
-	this->state = value;
-}
-
-int Snake::GetX()
-{
-	return snake_x;
-}
-
-int Snake::GetY()
-{
-	return snake_y;
+	direction = value;
 }
 
 void Snake::Draw()
 {
-	getBadge();
+	for (int i = 0; i < snakeSize; i++)
+	{
+		cell[i]->Draw(GetBadge());
+	}
 }
 
 void Snake::AddCell(int x, int y)
@@ -103,28 +94,32 @@ void Snake::Move()
 	}
 
 	// turning snake's head
-	switch (direction) { // 2
+	switch (direction)
+	{ // 2
 	case 'w':
-		cell[0]->MoveUp();
+		MoveUp();
 		break;
 	case 's':
-		cell[0]->MoveDown();
+		MoveDown();
 		break;
 	case 'a':
-		cell[0]->MoveLeft();
+		MoveLeft();
 		break;
 	case 'd':
-		cell[0]->MoveRight();
+		MoveRight();
 		break;
 	}
 
-	if (cell[0]->GetX() == 0 || cell[0]->GetY() == 0)
+	set_X(cell[0]->GetX());
+	set_Y(cell[0]->GetY());
+
+	if (GetX() == 0 || GetY() == 0)
 	{
-		state = 0;
+		SetState(0);
 	}
 	else if (SelfCollision())
 	{
-		state = 0;
+		SetState(0);
 	}
 }
 
@@ -136,7 +131,37 @@ int Snake::SelfCollision()
 	return 0;
 }
 
-int Snake::GetState()
+void Snake::NewSnake()
 {
-	return state;
+	SetState(1);
+	snakeSize = 1;
+	cell[0] = new GameObjects(WidthField / 2, HeighField / 2);
+	for (int i = 1; i < maxSnakeSize; i++) {
+		cell[i] = NULL;
+	};
+}
+
+void Snake::Debug()
+{
+	std::cout << "(" << GetX() << "," << GetY() << ") ";
+}
+
+void Snake::MoveUp()
+{
+	cell[0]->MoveUp();
+}
+
+void Snake::MoveDown()
+{
+	cell[0]->MoveDown();
+}
+
+void Snake::MoveLeft()
+{
+	cell[0]->MoveLeft();
+}
+
+void Snake::MoveRight()
+{
+	cell[0]->MoveRight();
 }

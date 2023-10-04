@@ -21,13 +21,9 @@ private:
     std::vector<menuItem> menuItems;
 
 public:
-
     Menu();
     ~Menu();
- /*   void color(int color);
-    void gotoxy(int x, int y);*/
+
     void showMenu();
-
-
 };
 

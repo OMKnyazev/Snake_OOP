@@ -129,6 +129,7 @@
   <ItemGroup>
     <ClCompile Include="CursorSetting.cpp" />
     <ClCompile Include="Fruits.cpp" />
+    <ClCompile Include="GameLogic.cpp" />
     <ClCompile Include="GameObjects.cpp" />
     <ClCompile Include="Menu.cpp" />
     <ClCompile Include="PlayField.cpp" />
@@ -138,6 +139,7 @@
   <ItemGroup>
     <ClInclude Include="CursorSetting.h" />
     <ClInclude Include="Fruits.h" />
+    <ClInclude Include="GameLogic.h" />
     <ClInclude Include="GameObjects.h" />
     <ClInclude Include="Menu.h" />
     <ClInclude Include="PlayField.h" />

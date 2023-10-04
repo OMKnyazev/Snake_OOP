@@ -6,33 +6,40 @@ const int maxSnakeSize = 100;
 class Snake : public GameObjects
 {
 private:
-	int snake_x;
-	int snake_y;
 	GameObjects* cell[maxSnakeSize];
-	int snakeSize;
+	int snakeSize = 1;
 	char direction;
-	bool state;
-	char badge = 'X';
+	int color = 12;
 
 public:
 	Snake();
-	int getSankeSize();
-	char getDirection();
-	bool getState();;
-	char getBadge();
+	virtual ~Snake();
+
+	// Gameobject interface
+	virtual void Draw() override;
+	virtual void Debug() override;
+
+	virtual void MoveUp() override;
+	virtual void MoveDown() override;
+	virtual void MoveLeft() override;
+	virtual void MoveRight() override;
+
+	// snake methods
 	void setSnakeSize(int value);
 	void setDirection(char value);
-	void setState(bool value);
-	int GetX() override;
-	int GetY() override;
-	void Draw() override;
-	void AddCell(int x, int y);
+	
+	int getSankeSize() const;
+	char getDirection() const;
+	
+	void AddCell(int x, int y);//adding links to a snake
+	int SelfCollision();
+	void NewSnake();//method for cleaning snake
+
+	//moving logic
+	void Move();
 	void TurnUp();
 	void TurnDown();
 	void TurnLeft();
 	void TurnRight();
-	void Move();
-	int SelfCollision();
-	int GetState();
 };
 

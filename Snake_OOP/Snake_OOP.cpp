@@ -1,29 +1,26 @@
-// Snake_OOP.cpp : This file contains the 'main' function. Program execution begins and ends there.
+﻿// Snake_OOP.cpp : This file contains the 'main' function. Program execution begins and ends there.
 //
+//TASK:
+//Требования:
+//1. Создать проект в MS Visual Studio C++, версия 15 - 17;
+//2. Показать знание и умение использовать принципы ООП, работу с
+//многопоточностью;
+//3. Должны быть комментарии в коде;
+//4. Должно быть стартовое меню.
+//Сделать консольную змейку.
+//Игрок управляет змейкой которая ползает по плоскости ограниченной стенками
+//собирая еду избегая столкновения с собственным хвостом и краями игрового поля.
+//Каждый раз, когда змея съедает кусок пищи, она становится длиннее, что
+//постепенно усложняет игру.Игрок управляет направлением движения головы змеи
+//(4 направления: вверх, вниз, влево, вправо), а хвост змеи движется следом.Игрок
+//не может остановить движение змеи.Очки игрока должны выводиться рядом с
+//полем.Если игрок проиграет он может начать сначала.
 
 #include <iostream>
-#include "Menu.h"
-#include "PlayField.h"
-#include "Fruits.h"
+#include "GameLogic.h"
 
 int main()
 {
-    Menu m;
-    m.showMenu();
-    PlayField pf;
-    pf.drawPlayField();
-    Fruits fr;
-    fr.Draw();
-
+	GameLogic game;
+	game.PlayGame();
 }
-
-// Run program: Ctrl + F5 or Debug > Start Without Debugging menu
-// Debug program: F5 or Debug > Start Debugging menu
-
-// Tips for Getting Started: 
-//   1. Use the Solution Explorer window to add/manage files
-//   2. Use the Team Explorer window to connect to source control
-//   3. Use the Output window to see build output and other messages
-//   4. Use the Error List window to view errors
-//   5. Go to Project > Add New Item to create new code files, or Project > Add Existing Item to add existing code files to the project
-//   6. In the future, to open this project again, go to File > Open > Project and select the .sln file

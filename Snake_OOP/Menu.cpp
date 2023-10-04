@@ -12,28 +12,6 @@ Menu::~Menu()
 
 }
 
-//void Menu::color(int color)
-//{
-//    SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), color);
-//}
-
-//void Menu::gotoxy(int x, int y)
-//{
-//    COORD c;
-//    c.X = x;
-//    c.Y = y;
-//    SetConsoleCursorPosition(GetStdHandle(STD_OUTPUT_HANDLE), c);
-//}
-
-//void ConsoleCursorVisible(bool show)
-//{
-//    CONSOLE_CURSOR_INFO structCursorInfo;
-//    GetConsoleCursorInfo(GetStdHandle(STD_OUTPUT_HANDLE), &structCursorInfo);
-//    structCursorInfo.bVisible = show; // change cursor visibility
-//    SetConsoleCursorInfo(GetStdHandle(STD_OUTPUT_HANDLE), &structCursorInfo);
-//}
-
-
 void Menu::showMenu()
 {
     std::cout << "Welcome to SNAKE" << std::endl;
